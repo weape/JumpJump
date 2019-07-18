@@ -6,12 +6,12 @@ public class MenuController : MonoBehaviour
 {
     public void OnBackCLicked()
     {
-        Application.LoadScene("Menu");
+        Application.LoadLevel("Menu");
     }
 
     public void OnPlayClicked()
     {
-        Application.LoadScene("Game");
+        Application.LoadLevel("Game");
     }
 
     public void OnQuitClicked()
