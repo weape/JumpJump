@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Health
   - Energe
+  - Ground
   layers:
   - Default
   - TransparentFX
