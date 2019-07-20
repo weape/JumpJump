@@ -81,6 +81,10 @@ public class PlayerController : MonoBehaviour
             }
             else if (Time.time - lastTime >= 5)
             {
+                if (energy > 5 && health < 10)
+                {
+                    health++;
+                }
                 energy--;
                 lastTime = Time.time;
             }
