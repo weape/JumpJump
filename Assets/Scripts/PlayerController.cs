@@ -36,6 +36,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnCollisionStay2D(Collision2D collision) {
+        if (collision.collider.tag == "Ground") {
+            isOnGround = true;
+        }
+    }
+
     void OnCollisionExit2D(Collision2D collision) {
         if (collision.collider.tag == "Ground") {
             isOnGround = false;
