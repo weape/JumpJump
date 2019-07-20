@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MenuController : MonoBehaviour
 {
-    public void OnBackCLicked()
+    public void OnBackClicked()
     {
         Application.LoadLevel("Menu");
     }

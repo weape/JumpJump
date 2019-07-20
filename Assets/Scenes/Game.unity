@@ -174,12 +174,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: fee517046ccdb8cca93183b6d549e6be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: abda5725a6f5dd44596b6d18d291c4b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 14.4, y: 8.1}
+  m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -194,7 +194,7 @@ Transform:
   m_GameObject: {fileID: 566058317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -445,6 +445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grass: {fileID: 4467864725558681454, guid: d183b76445fa6d1ab89cb9c191ad2b65, type: 3}
   spike: {fileID: 8093704393997133433, guid: 675ff839aff78d922921649ede472613, type: 3}
+  monster: {fileID: 0}
 --- !u!1 &1922892229 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3551468430602816394, guid: 7df093b636a520558814040565292b61,
@@ -466,7 +467,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

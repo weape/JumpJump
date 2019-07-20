@@ -35,6 +35,10 @@ public class PlayerController : MonoBehaviour
     public void Damage()
     {
         health--;
+        if (health <= 0)
+        {
+            Application.LoadLevel("GameEnd");
+        }
     }
 
     // Start is called before the first frame update
@@ -73,21 +77,21 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (energy > 0)
+        if (lastTime == 0.0F)
         {
-            if (lastTime == 0.0F)
+            lastTime = Time.time;
+        }
+        else if (Time.time - lastTime >= 5)
+        {
+            if (energy > 5 && health < 10)
             {
-                lastTime = Time.time;
+                health++;
             }
-            else if (Time.time - lastTime >= 5)
+            if (energy > 0)
             {
-                if (energy > 5 && health < 10)
-                {
-                    health++;
-                }
                 energy--;
-                lastTime = Time.time;
             }
+            lastTime = Time.time;
         }
     }
 
