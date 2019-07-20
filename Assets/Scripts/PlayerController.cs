@@ -4,18 +4,53 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float force = 350.0F;
+    private int health;
 
-    private Vector2 forceDirection = new Vector2(0.0F, 1.0F);
+    private int energy;
 
-    private bool isOnGround = false;
+    private Texture2D blankImage;
+
+    private Texture2D healthImage;
+
+    private Texture2D energyImage;
 
     private Rigidbody2D rigidbody;
+
+    private Vector2 force = new Vector2(0.0F, 1.0F) * 350.0F;
+
+    private bool isOnGround = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        health = 10; energy = 10;
         rigidbody = GetComponent<Rigidbody2D>();
+        blankImage = Resources.Load<Texture2D>("Blank");
+        healthImage = Resources.Load<Texture2D>("Health");
+        energyImage = Resources.Load<Texture2D>("Energy");
+    }
+
+    void OnGUI()
+    {
+        for (int i = 0; i < health; i++)
+        {
+            GUI.DrawTexture(new Rect(10 + i * 11, 10, 10, 20), healthImage);
+        }
+
+        for (int i = 9; i >= health; i--)
+        {
+            GUI.DrawTexture(new Rect(10 + i * 11, 10, 10, 20), blankImage);
+        }
+
+        for (int i = 0; i < energy; i++)
+        {
+            GUI.DrawTexture(new Rect(10 + i * 11, 40, 10, 20), energyImage);
+        }
+
+        for (int i = 9; i >= energy; i--)
+        {
+            GUI.DrawTexture(new Rect(10 + i * 11, 40, 10, 20), blankImage);
+        }
     }
 
     // Update is called once per frame
@@ -24,27 +59,32 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void FixedUpdate() {
-        if (isOnGround && Input.GetKeyDown(KeyCode.Space)) {
-            rigidbody.AddForce(forceDirection * force);
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.collider.tag == "Ground") {
-            isOnGround = true;
-        }
-    }
-
-    void OnCollisionStay2D(Collision2D collision) {
-        if (collision.collider.tag == "Ground") {
-            isOnGround = true;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision) {
-        if (collision.collider.tag == "Ground") {
+    void FixedUpdate()
+    {
+        if (isOnGround && Input.GetKeyDown(KeyCode.Space))
+        {
+            rigidbody.AddForce(force);
             isOnGround = false;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        switch (collision.collider.tag)
+        {
+            case "Ground":
+                isOnGround = true;
+                break;
+            case "Barrier":
+                GameObject.Destroy(collision.collider.gameObject);
+                health--;
+                // if (health <= 0)
+                // {
+                //     Application.LoadLevel("");
+                // }
+                break;
+            default:
+                break;
         }
     }
 }

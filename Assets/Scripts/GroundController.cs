@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class GroundController : MonoBehaviour
 {
-    private GameObject grass;
+    public GameObject grass;
 
-    private float speed = 0.2F;
+    public GameObject spike;
+
+    private float speed = 5F;
 
     private Vector2 moveDirection = new Vector2(-1.0F, 0.0F);
+
+    private int spikeCount = 30;
 
     private int groundLength = 100;
 
@@ -17,16 +21,22 @@ public class GroundController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        grass = GameObject.Find("Grass");
+        grass = Instantiate(grass, transform);
         for (int i = 0; i < groundLength; i++)
         {
             grass = Instantiate(grass, grass.transform.position + posDelta, grass.transform.rotation, transform);
+        }
+
+        spike = Instantiate(spike, transform);
+        for (int i = 0; i < spikeCount; i++)
+        {
+            spike = Instantiate(spike, spike.transform.position + posDelta * 2, spike.transform.rotation, transform);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(moveDirection * speed);
+        transform.Translate(moveDirection * speed * Time.deltaTime);
     }
 }

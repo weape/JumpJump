@@ -5,9 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Health
-  - Energe
   - Ground
   - Barrier
+  - Energy
+  - Blank
   layers:
   - Default
   - TransparentFX
