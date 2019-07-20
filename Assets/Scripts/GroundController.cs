@@ -8,9 +8,15 @@ public class GroundController : MonoBehaviour
 
     public GameObject spike;
 
+    public GameObject monster;
+
+    private PlayerController playerController;
+
     private float speed = 5F;
 
     private Vector2 moveDirection = new Vector2(-1.0F, 0.0F);
+
+    private Vector2 energySpeedFactor = new Vector2(-0.5F, 0.0F);
 
     private int spikeCount = 30;
 
@@ -32,11 +38,15 @@ public class GroundController : MonoBehaviour
         {
             spike = Instantiate(spike, spike.transform.position + posDelta * 2, spike.transform.rotation, transform);
         }
+
+        // monster = Instantiate(monster, transform);
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(moveDirection * speed * Time.deltaTime);
+        Vector2 totalSpeed = moveDirection * speed + energySpeedFactor * playerController.GetEnergy();
+        transform.Translate(totalSpeed * Time.deltaTime);
     }
 }

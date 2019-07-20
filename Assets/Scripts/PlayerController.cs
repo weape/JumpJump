@@ -20,6 +20,18 @@ public class PlayerController : MonoBehaviour
 
     private bool isOnGround = false;
 
+    private float lastTime = 0.0F;
+
+    public int GetHealth()
+    {
+        return health;
+    }
+
+    public int GetEnergy()
+    {
+        return energy;
+    }
+
     public void Damage()
     {
         health--;
@@ -61,7 +73,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (energy > 0)
+        {
+            if (lastTime == 0.0F)
+            {
+                lastTime = Time.time;
+            }
+            else if (Time.time - lastTime >= 5)
+            {
+                energy--;
+                lastTime = Time.time;
+            }
+        }
     }
 
     void FixedUpdate()
@@ -73,7 +96,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other) {
+    void OnCollisionEnter2D(Collision2D other)
+    {
         isOnGround = true;
     }
 }
