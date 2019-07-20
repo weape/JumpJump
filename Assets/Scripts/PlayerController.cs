@@ -14,17 +14,22 @@ public class PlayerController : MonoBehaviour
 
     private Texture2D energyImage;
 
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
 
     private Vector2 force = new Vector2(0.0F, 1.0F) * 350.0F;
 
     private bool isOnGround = false;
 
+    public void Damage()
+    {
+        health--;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         health = 10; energy = 10;
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         blankImage = Resources.Load<Texture2D>("Blank");
         healthImage = Resources.Load<Texture2D>("Health");
         energyImage = Resources.Load<Texture2D>("Energy");
@@ -63,28 +68,12 @@ public class PlayerController : MonoBehaviour
     {
         if (isOnGround && Input.GetKeyDown(KeyCode.Space))
         {
-            rigidbody.AddForce(force);
+            rb.AddForce(force);
             isOnGround = false;
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        switch (collision.collider.tag)
-        {
-            case "Ground":
-                isOnGround = true;
-                break;
-            case "Barrier":
-                GameObject.Destroy(collision.collider.gameObject);
-                health--;
-                // if (health <= 0)
-                // {
-                //     Application.LoadLevel("");
-                // }
-                break;
-            default:
-                break;
-        }
+    void OnCollisionEnter2D(Collision2D other) {
+        isOnGround = true;
     }
 }
