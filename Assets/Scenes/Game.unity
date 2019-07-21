@@ -445,6 +445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grass: {fileID: 4467864725558681454, guid: d183b76445fa6d1ab89cb9c191ad2b65, type: 3}
   spike: {fileID: 8093704393997133433, guid: 675ff839aff78d922921649ede472613, type: 3}
+  chest: {fileID: 7585709859806037164, guid: 6810ebd7013e73eeab2db7738e4e6c37, type: 3}
   monster: {fileID: 0}
 --- !u!1 &1922892229 stripped
 GameObject:

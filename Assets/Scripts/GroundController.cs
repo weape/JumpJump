@@ -8,6 +8,8 @@ public class GroundController : MonoBehaviour
 
     public GameObject spike;
 
+    public GameObject chest;
+
     public GameObject monster;
 
     private PlayerController playerController;
@@ -32,6 +34,8 @@ public class GroundController : MonoBehaviour
         {
             grass = Instantiate(grass, grass.transform.position + posDelta, grass.transform.rotation, transform);
         }
+
+        chest = Instantiate(chest, grass.transform.position + new Vector3(0.0F, 2.0F, 0.0F), grass.transform.rotation, transform);
 
         spike = Instantiate(spike, transform);
         for (int i = 0; i < spikeCount; i++)

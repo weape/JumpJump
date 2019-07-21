@@ -77,6 +77,25 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DecreaseEnergy();
+    }
+
+    void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
+        {
+            rb.AddForce(force);
+            isOnGround = false;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        isOnGround = true;
+    }
+
+    void DecreaseEnergy()
+    {
         if (lastTime == 0.0F)
         {
             lastTime = Time.time;
@@ -93,19 +112,5 @@ public class PlayerController : MonoBehaviour
             }
             lastTime = Time.time;
         }
-    }
-
-    void FixedUpdate()
-    {
-        if (isOnGround && Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.AddForce(force);
-            isOnGround = false;
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        isOnGround = true;
     }
 }
