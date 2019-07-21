@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isOnGround = false;
 
+    private bool isJumpPressed = false;
+
     private float lastTime = 0.0F;
 
     public int GetHealth()
@@ -77,15 +79,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isJumpPressed = isJumpPressed || Input.GetKeyDown(KeyCode.Space);
         DecreaseEnergy();
     }
 
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
+        if (isJumpPressed && isOnGround)
         {
             rb.AddForce(force);
             isOnGround = false;
+            isJumpPressed = false;
         }
     }
 

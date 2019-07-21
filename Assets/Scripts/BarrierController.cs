@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BarrierController : MonoBehaviour
 {
+    private bool isTriggered = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,14 @@ public class BarrierController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        collider.gameObject.GetComponent<PlayerController>().Damage();
-        GameObject.Destroy(gameObject);
+        lock (this)
+        {
+            if (!isTriggered)
+            {
+                isTriggered = true;
+                GameObject.Destroy(gameObject);
+                collider.gameObject.GetComponent<PlayerController>().Damage();
+            }
+        }
     }
 }
