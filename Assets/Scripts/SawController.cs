@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SawController : MonoBehaviour
 {
-    private Vector2 speed = new Vector2(7.5F, 0.0F);
+    private Vector2 speed = new Vector2(6.25F, 0.0F);
 
     private Vector3 rotation = new Vector3(0.0F, 0.0F, -360.0F);
 

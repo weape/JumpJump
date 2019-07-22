@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isJumpPressed = false;
 
+    private bool isHighJumpPressed = false;
+
     private float lastTime = 0.0F;
 
     public int GetHealth()
@@ -36,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     public void Damage()
     {
-        health--;
+        // health--;
         if (health <= 0)
         {
             Application.LoadLevel("GameEnd");
@@ -80,16 +82,25 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         isJumpPressed = isJumpPressed || Input.GetKeyDown(KeyCode.Space);
+        isHighJumpPressed = isHighJumpPressed || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift);
         DecreaseEnergy();
     }
 
     void FixedUpdate()
     {
-        if (isJumpPressed && isOnGround)
+        if (isOnGround && isJumpPressed)
         {
-            rb.AddForce(force);
-            isOnGround = false;
+            if (isHighJumpPressed)
+            {
+                rb.AddForce(force * 1.5F);
+                isHighJumpPressed = false;
+            }
+            else
+            {
+                rb.AddForce(force);
+            }
             isJumpPressed = false;
+            isOnGround = false;
         }
     }
 
