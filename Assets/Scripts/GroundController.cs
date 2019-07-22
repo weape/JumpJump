@@ -10,8 +10,6 @@ public class GroundController : MonoBehaviour
 
     public GameObject chest;
 
-    public GameObject monster;
-
     private PlayerController playerController;
 
     private float speed = 5F;

@@ -26,7 +26,10 @@ public class BarrierController : MonoBehaviour
             {
                 isTriggered = true;
                 GameObject.Destroy(gameObject);
-                collider.gameObject.GetComponent<PlayerController>().Damage();
+                if (collider.gameObject.name == "Player")
+                {
+                    collider.gameObject.GetComponent<PlayerController>().Damage();
+                }
             }
         }
     }
