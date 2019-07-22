@@ -45,6 +45,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Recharge()
+    {
+        energy += 2;
+        if (energy > 10)
+        {
+            energy = 10;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

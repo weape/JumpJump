@@ -10,6 +10,8 @@ public class GroundController : MonoBehaviour
 
     public GameObject chest;
 
+    public GameObject energyCoin;
+
     private PlayerController playerController;
 
     private float speed = 5F;
@@ -21,6 +23,8 @@ public class GroundController : MonoBehaviour
     private int spikeCount = 30;
 
     private int groundLength = 100;
+
+    private int energyCoinCount = 3;
 
     private Vector3 posDelta = new Vector3(5.0F, 0.0F, 0.0F);
 
@@ -40,6 +44,12 @@ public class GroundController : MonoBehaviour
         {
             spike = Instantiate(spike, spike.transform.position + posDelta * 2, spike.transform.rotation, transform);
         }
+
+        for (int i = 0; i < energyCoinCount; i++)
+        {
+            energyCoin  = Instantiate(energyCoin, new Vector3(100.0F + i * 50.0F, 2.0F, 0.0F), transform.rotation, transform);
+        }
+
 
         // monster = Instantiate(monster, transform);
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
