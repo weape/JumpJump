@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,17 +21,18 @@ public class GroundController : MonoBehaviour
 
     private Vector2 energySpeedFactor = new Vector2(-0.5F, 0.0F);
 
-    private int spikeCount = 30;
+    private int spikeCount = 100;
 
-    private int groundLength = 100;
+    private int groundLength = 200;
 
-    private int energyCoinCount = 3;
+    private int energyCoinCount = 30;
 
     private Vector3 posDelta = new Vector3(5.0F, 0.0F, 0.0F);
 
     // Start is called before the first frame update
     void Start()
     {
+        System.Random rand = new System.Random();
         grass = Instantiate(grass, transform);
         for (int i = 0; i < groundLength; i++)
         {
@@ -39,15 +41,19 @@ public class GroundController : MonoBehaviour
 
         chest = Instantiate(chest, grass.transform.position + new Vector3(0.0F, 2.0F, 0.0F), grass.transform.rotation, transform);
 
+        
         spike = Instantiate(spike, transform);
         for (int i = 0; i < spikeCount; i++)
         {
-            spike = Instantiate(spike, spike.transform.position + posDelta * 2, spike.transform.rotation, transform);
+            Vector3 pos = new Vector3(rand.Next(10, 20), 0.0F, 0.0F);
+            spike = Instantiate(spike, spike.transform.position + pos, spike.transform.rotation, transform);
         }
 
+        energyCoin = Instantiate(energyCoin, new Vector3(rand.Next(50, 100), 2.0F, 0.0F), transform.rotation, transform);
         for (int i = 0; i < energyCoinCount; i++)
         {
-            energyCoin  = Instantiate(energyCoin, new Vector3(100.0F + i * 50.0F, 2.0F, 0.0F), transform.rotation, transform);
+            Vector3 pos = new Vector3(rand.Next(50, 100), 0.0F, 0.0F);
+            energyCoin  = Instantiate(energyCoin, energyCoin.transform.position + pos, transform.rotation, transform);
         }
 
 

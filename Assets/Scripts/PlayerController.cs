@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     public void Damage()
     {
-        // health--;
+        health--;
         if (health <= 0)
         {
             Application.LoadLevel("GameEnd");
