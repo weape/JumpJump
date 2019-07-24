@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
         {
             energy = 10;
         }
+        lastTime = Time.time;
     }
 
     // Start is called before the first frame update

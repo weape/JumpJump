@@ -15,17 +15,15 @@ public class GroundController : MonoBehaviour
 
     private PlayerController playerController;
 
-    private float speed = 5F;
+    private Vector2 minSpeed = new Vector2(-7.0F, 0.0F);
 
-    private Vector2 moveDirection = new Vector2(-1.0F, 0.0F);
-
-    private Vector2 energySpeedFactor = new Vector2(-0.5F, 0.0F);
+    private Vector2 energySpeedFactor = new Vector2(-0.3F, 0.0F);
 
     private int spikeCount = 100;
 
     private int groundLength = 200;
 
-    private int energyCoinCount = 30;
+    private int energyCoinCount = 40;
 
     private Vector3 posDelta = new Vector3(5.0F, 0.0F, 0.0F);
 
@@ -52,7 +50,7 @@ public class GroundController : MonoBehaviour
         energyCoin = Instantiate(energyCoin, new Vector3(rand.Next(50, 100), 2.0F, 0.0F), transform.rotation, transform);
         for (int i = 0; i < energyCoinCount; i++)
         {
-            Vector3 pos = new Vector3(rand.Next(50, 100), 0.0F, 0.0F);
+            Vector3 pos = new Vector3(rand.Next(30, 60), 0.0F, 0.0F);
             energyCoin  = Instantiate(energyCoin, energyCoin.transform.position + pos, transform.rotation, transform);
         }
 
@@ -64,7 +62,7 @@ public class GroundController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 totalSpeed = moveDirection * speed + energySpeedFactor * playerController.GetEnergy();
+        Vector2 totalSpeed = minSpeed + energySpeedFactor * playerController.GetEnergy();
         transform.Translate(totalSpeed * Time.deltaTime);
     }
 }
