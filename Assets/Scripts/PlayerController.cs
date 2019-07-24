@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private bool isHighJumpPressed = false;
 
     private float lastTime = 0.0F;
+
+    private Text scoreText;
 
     public int GetHealth()
     {
@@ -61,9 +65,11 @@ public class PlayerController : MonoBehaviour
         health = 10; energy = 10;
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 4;
+        rb.freezeRotation = true; // avoid rotation while collising
         blankImage = Resources.Load<Texture2D>("Blank");
         healthImage = Resources.Load<Texture2D>("Health");
         energyImage = Resources.Load<Texture2D>("Energy");
+        scoreText = GameObject.Find("Score").GetComponent<Text>();
     }
 
     void OnGUI()
@@ -95,6 +101,7 @@ public class PlayerController : MonoBehaviour
         isJumpPressed = isJumpPressed || Input.GetKeyDown(KeyCode.Space);
         isHighJumpPressed = isHighJumpPressed || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift);
         DecreaseEnergy();
+        scoreText.text = ((long)((-GameObject.Find("Grass(Clone)").transform.position.x) * 100)).ToString();
     }
 
     void FixedUpdate()

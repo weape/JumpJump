@@ -13,6 +13,8 @@ public class GroundController : MonoBehaviour
 
     public GameObject energyCoin;
 
+    public static long distance = 0;
+
     private PlayerController playerController;
 
     private Vector2 minSpeed = new Vector2(-7.0F, 0.0F);
@@ -68,5 +70,6 @@ public class GroundController : MonoBehaviour
     {
         Vector2 totalSpeed = minSpeed + energySpeedFactor * playerController.GetEnergy();
         transform.Translate(totalSpeed * Time.deltaTime);
+        distance -= (int)(totalSpeed * Time.deltaTime).x;
     }
 }
