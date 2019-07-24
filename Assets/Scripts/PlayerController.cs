@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    private Vector2 force = new Vector2(0.0F, 1.0F) * 350.0F;
+    private Vector2 force = new Vector2(0.0F, 1.0F) * 700.0F;
 
     private bool isOnGround = false;
 
@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         health = 10; energy = 10;
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 4;
         blankImage = Resources.Load<Texture2D>("Blank");
         healthImage = Resources.Load<Texture2D>("Health");
         energyImage = Resources.Load<Texture2D>("Energy");
