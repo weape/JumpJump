@@ -5,3 +5,5 @@ Packages/
 Temp/
 *.sln
 *.csproj
+*_Data
+*.x86_64
