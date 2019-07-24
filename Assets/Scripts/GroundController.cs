@@ -29,10 +29,14 @@ public class GroundController : MonoBehaviour
 
     private Vector3 posDelta = new Vector3(5.0F, 0.0F, 0.0F);
 
+    private GameObject template;
+
     // Start is called before the first frame update
     void Start()
     {
         System.Random rand = new System.Random();
+        template = Resources.Load("template/template1") as GameObject;
+        Instantiate(template, transform.position + new Vector3(20, 0, 0), transform.rotation, transform);
         grass = Instantiate(grass, transform);
         for (int i = 0; i < groundLength; i++)
         {
@@ -41,7 +45,7 @@ public class GroundController : MonoBehaviour
 
         chest = Instantiate(chest, grass.transform.position + new Vector3(0.0F, 2.0F, 0.0F), grass.transform.rotation, transform);
 
-        
+
         spike = Instantiate(spike, transform);
         for (int i = 0; i < spikeCount; i++)
         {
@@ -53,7 +57,7 @@ public class GroundController : MonoBehaviour
         for (int i = 0; i < energyCoinCount; i++)
         {
             Vector3 pos = new Vector3(rand.Next(50, 100), 0.0F, 0.0F);
-            energyCoin  = Instantiate(energyCoin, energyCoin.transform.position + pos, transform.rotation, transform);
+            energyCoin = Instantiate(energyCoin, energyCoin.transform.position + pos, transform.rotation, transform);
         }
 
 
