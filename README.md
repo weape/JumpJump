@@ -21,3 +21,11 @@ A simple game developed with Unity Engine.
 * 障碍：玩家碰到障碍会掉血；
 
 * 奖励：玩家通过奖励获得体力值，一个奖励提供25%的体力值；
+
+ToDo List:
+
+* add more game templates
+* add background music
+* display score and rank in GameEnd Scene
+* add more game level
+* add pass reminder
