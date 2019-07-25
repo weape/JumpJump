@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,9 +26,9 @@ public class GroundController : MonoBehaviour
     void Start()
     {
         System.Random rand = new System.Random();
-        List<GameObject> Templates = new List<GameObject>();
-        Templates.Add(Resources.Load("template/template1") as GameObject);
-        Templates.Add(Resources.Load("template/template2") as GameObject);
+        // List<GameObject> Templates = new List<GameObject>();
+        Object[] Templates = Resources.LoadAll("template");
+        // Templates.CopyTo(templateArray);
         grass = Instantiate(grass, transform);
         for (int i = 0; i < groundLength; i++)
         {
@@ -39,13 +38,12 @@ public class GroundController : MonoBehaviour
         chest = Instantiate(chest, grass.transform.position + new Vector3(0.0F, 2.0F, 0.0F), grass.transform.rotation, transform);
 
         GameObject template;
-        template = Instantiate(Templates[rand.Next(0, Templates.Count)], new Vector3(rand.Next(10, 30), -3.0F, 0.0F), transform.rotation, transform);
+        template = (GameObject)Instantiate(Templates[rand.Next(0, Templates.Length)], new Vector3(rand.Next(10, 30), -3.0F, 0.0F), transform.rotation, transform);
         for (int i = 0; i < templateCount; i++)
         {
             Vector3 pos = new Vector3(rand.Next(30, 60), 0.0F, 0.0F);
-            template = Instantiate(Templates[rand.Next(0, Templates.Count)], template.transform.position + pos, transform.rotation, transform);
+            template = Instantiate((GameObject)Templates[rand.Next(0, Templates.Length)], template.transform.position + pos, transform.rotation, transform);
         }
-
 
         // monster = Instantiate(monster, transform);
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
