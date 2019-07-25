@@ -26,9 +26,9 @@ public class GroundController : MonoBehaviour
     void Start()
     {
         System.Random rand = new System.Random();
-        // List<GameObject> Templates = new List<GameObject>();
+        // load all game templates
         Object[] Templates = Resources.LoadAll("template");
-        // Templates.CopyTo(templateArray);
+
         grass = Instantiate(grass, transform);
         for (int i = 0; i < groundLength; i++)
         {
@@ -37,6 +37,7 @@ public class GroundController : MonoBehaviour
 
         chest = Instantiate(chest, grass.transform.position + new Vector3(0.0F, 2.0F, 0.0F), grass.transform.rotation, transform);
 
+        // set game template into scene
         GameObject template;
         template = (GameObject)Instantiate(Templates[rand.Next(0, Templates.Length)], new Vector3(rand.Next(10, 30), -3.0F, 0.0F), transform.rotation, transform);
         for (int i = 0; i < templateCount; i++)
@@ -45,7 +46,6 @@ public class GroundController : MonoBehaviour
             template = Instantiate((GameObject)Templates[rand.Next(0, Templates.Length)], template.transform.position + pos, transform.rotation, transform);
         }
 
-        // monster = Instantiate(monster, transform);
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
