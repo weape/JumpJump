@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 139631735}
   - component: {fileID: 139631737}
   - component: {fileID: 139631736}
+  - component: {fileID: 139631738}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -265,6 +266,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 139631734}
   m_CullTransparentMesh: 0
+--- !u!114 &139631738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139631734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b052ac3ac39b502993e985ae24b4cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &154753779
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +290,7 @@ GameObject:
   - component: {fileID: 154753782}
   - component: {fileID: 154753781}
   m_Layer: 5
-  m_Name: RankTitle
+  m_Name: Rank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -650,7 +663,7 @@ GameObject:
   - component: {fileID: 1041799259}
   - component: {fileID: 1041799258}
   m_Layer: 5
-  m_Name: 'Rank '
+  m_Name: RankTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
