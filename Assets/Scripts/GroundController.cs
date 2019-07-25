@@ -16,7 +16,7 @@ public class GroundController : MonoBehaviour
 
     private Vector2 energySpeedFactor = new Vector2(-0.3F, 0.0F);
 
-    private int groundLength = 100;
+    private int groundLength = 75;
 
     private int templateCount = 5;
 
@@ -39,11 +39,11 @@ public class GroundController : MonoBehaviour
 
         // set game template into scene
         GameObject template;
-        template = (GameObject)Instantiate(Templates[rand.Next(2, Templates.Length)], new Vector3(rand.Next(10, 30), -3.0F, 0.0F), transform.rotation, transform);
+        template = (GameObject)Instantiate(Templates[rand.Next(0, Templates.Length)], new Vector3(rand.Next(10, 30), -3.0F, 0.0F), transform.rotation, transform);
         for (int i = 0; i < templateCount; i++)
         {
             Vector3 pos = new Vector3(rand.Next(30, 50), 0.0F, 0.0F);
-            template = Instantiate((GameObject)Templates[rand.Next(2, Templates.Length)], template.transform.position + pos, transform.rotation, transform);
+            template = Instantiate((GameObject)Templates[rand.Next(0, Templates.Length)], template.transform.position + pos, transform.rotation, transform);
         }
 
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
