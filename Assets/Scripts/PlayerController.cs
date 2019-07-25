@@ -30,6 +30,12 @@ public class PlayerController : MonoBehaviour
 
     private Text scoreText;
 
+    public static long score = 0;
+
+    private int gottenCoinNum = 0;
+
+    private const int COIN_SCORE = 5000;
+
     public int GetHealth()
     {
         return health;
@@ -57,6 +63,7 @@ public class PlayerController : MonoBehaviour
             energy = 10;
         }
         lastTime = Time.time;
+        gottenCoinNum += 1;
     }
 
     // Start is called before the first frame update
@@ -101,7 +108,8 @@ public class PlayerController : MonoBehaviour
         isJumpPressed = isJumpPressed || Input.GetKeyDown(KeyCode.Space);
         isHighJumpPressed = isHighJumpPressed || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift);
         DecreaseEnergy();
-        scoreText.text = ((long)((-GameObject.Find("Grass(Clone)").transform.position.x) * 100)).ToString();
+        score = (long)((-GameObject.Find("Grass(Clone)").transform.position.x) * 100) + COIN_SCORE * gottenCoinNum;
+        scoreText.text = score.ToString();
     }
 
     void FixedUpdate()
