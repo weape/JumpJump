@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     public void Recharge()
     {
-        energy += 2;
+        energy += 1;
         if (energy > 10)
         {
             energy = 10;
