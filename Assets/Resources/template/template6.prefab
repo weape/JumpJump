@@ -107,7 +107,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 0.0001}
+  m_Size: {x: 3.5, y: 0.0001}
   m_EdgeRadius: 0
 --- !u!1001 &955874599107261241
 PrefabInstance:
@@ -116,15 +116,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1827212310820365635}
     m_Modifications:
-    - target: {fileID: 8080363160351495304, guid: 760eaa76eb1da3e1c855c48f01db001c,
-        type: 3}
-      propertyPath: m_Name
-      value: SkyGrass (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 3493989204145436738, guid: 760eaa76eb1da3e1c855c48f01db001c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.27
       objectReference: {fileID: 0}
     - target: {fileID: 3493989204145436738, guid: 760eaa76eb1da3e1c855c48f01db001c,
         type: 3}
@@ -181,6 +176,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8080363160351495304, guid: 760eaa76eb1da3e1c855c48f01db001c,
+        type: 3}
+      propertyPath: m_Name
+      value: SkyGrass (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 760eaa76eb1da3e1c855c48f01db001c, type: 3}
 --- !u!4 &4413200295966280571 stripped
@@ -196,20 +196,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1827212310820365635}
     m_Modifications:
-    - target: {fileID: 8093704393997133433, guid: 675ff839aff78d922921649ede472613,
-        type: 3}
-      propertyPath: m_Name
-      value: Spike
-      objectReference: {fileID: 0}
     - target: {fileID: 8093704393997133439, guid: 675ff839aff78d922921649ede472613,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.27
       objectReference: {fileID: 0}
     - target: {fileID: 8093704393997133439, guid: 675ff839aff78d922921649ede472613,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8600001
+      value: 1.81
       objectReference: {fileID: 0}
     - target: {fileID: 8093704393997133439, guid: 675ff839aff78d922921649ede472613,
         type: 3}
@@ -256,6 +251,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8093704393997133433, guid: 675ff839aff78d922921649ede472613,
+        type: 3}
+      propertyPath: m_Name
+      value: Spike
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 675ff839aff78d922921649ede472613, type: 3}
 --- !u!4 &6588671808477573856 stripped
@@ -271,15 +271,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1827212310820365635}
     m_Modifications:
-    - target: {fileID: 8080363160351495304, guid: 760eaa76eb1da3e1c855c48f01db001c,
-        type: 3}
-      propertyPath: m_Name
-      value: SkyGrass
-      objectReference: {fileID: 0}
     - target: {fileID: 3493989204145436738, guid: 760eaa76eb1da3e1c855c48f01db001c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.27
       objectReference: {fileID: 0}
     - target: {fileID: 3493989204145436738, guid: 760eaa76eb1da3e1c855c48f01db001c,
         type: 3}
@@ -335,6 +330,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080363160351495304, guid: 760eaa76eb1da3e1c855c48f01db001c,
+        type: 3}
+      propertyPath: m_Name
+      value: SkyGrass
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 760eaa76eb1da3e1c855c48f01db001c, type: 3}
