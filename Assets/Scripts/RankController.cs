@@ -22,8 +22,10 @@ public class RankController : MonoBehaviour
             Vector3 pos = new Vector3(0.0F, -LayoutUtility.GetPreferredHeight((RectTransform)RankTitle.transform) / 2, 0.0F);
             newRank = Instantiate(newRank, newRank.transform.position + pos, newRank.transform.rotation, newRank.transform);
             newRank.GetComponent<Text>().text = "   " + (i + 1).ToString();
+            newRank.transform.parent = transform;
             newScore = Instantiate(newScore, newScore.transform.position + pos, newScore.transform.rotation, newScore.transform);
             newScore.GetComponent<Text>().text = "                       " + (Nodes["Score"][i]).ToString();
+            newScore.transform.parent = transform;
         }
     }
 
