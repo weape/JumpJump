@@ -21,6 +21,17 @@ public class MenuController : MonoBehaviour
         Application.LoadLevel("Game");
     }
 
+    public void OnNextLevelClicked()
+    {
+        float level = PlayerPrefs.GetFloat("Level", 1.0F);
+        if (level < 3.0F)
+        {
+            level++;
+        }
+        PlayerPrefs.SetFloat("Level", level);
+        OnPlayClicked();
+    }
+
     public void OnQuitClicked()
     {
         Application.Quit();
