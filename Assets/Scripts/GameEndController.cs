@@ -21,24 +21,19 @@ public class GameEndController : MonoBehaviour
         JSONNode Nodes = JSON.Parse(record);
         Nodes["Score"][-1].AsFloat = PlayerController.score;
         float[] floatArray = new float[Nodes["Score"].AsArray.Count];
-        int i = 0;
-        foreach (JSONNode item in Nodes["Score"])
+        for (int i = 0; i < Nodes["Score"].AsArray.Count; i++)
         {
-            floatArray[i] = item.AsFloat;
-            i++;
+            floatArray[i] = Nodes["Score"][i].AsFloat;
         }
         Array.Sort(floatArray);
         Array.Reverse(floatArray);
-        i = 0;
-        foreach (float item in floatArray)
+        for (int i = 0; i < Nodes["Score"].AsArray.Count; i++)
         {
-            Nodes["Score"][i] = item;
-            if (Math.Abs(item - PlayerController.score) < 0.001)
+            Nodes["Score"][i] = floatArray[i];
+            if (Math.Abs(floatArray[i] - PlayerController.score) < 0.00001)
             {
                 Rank.text = (i + 1).ToString();
-                break;
             }
-            i++;
         }
         PlayerPrefs.SetString("Score", Nodes.ToString());
     }
