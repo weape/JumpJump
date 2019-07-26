@@ -56,14 +56,17 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
-        Level = GameObject.Find("Level").GetComponent<Slider>();
-        LevelValue = GameObject.Find("LevelValue").GetComponent<Text>();
-        Level.value = PlayerPrefs.GetFloat("Level", 1.0F);
-        LevelValue.text = Level.value.ToString();
+        if (GameObject.Find("Level") != null)
+        {
+            Level = GameObject.Find("Level").GetComponent<Slider>();
+            LevelValue = GameObject.Find("LevelValue").GetComponent<Text>();
+            Level.value = PlayerPrefs.GetFloat("Level", 1.0F);
+            LevelValue.text = Level.value.ToString();
 
-        Volume = GameObject.Find("Volume").GetComponent<Slider>();
-        VolumeValue = GameObject.Find("VolumeValue").GetComponent<Text>();
-        Volume.value = PlayerPrefs.GetFloat("Volume", 0.0F);
-        VolumeValue.text = Volume.value.ToString();
+            Volume = GameObject.Find("Volume").GetComponent<Slider>();
+            VolumeValue = GameObject.Find("VolumeValue").GetComponent<Text>();
+            Volume.value = PlayerPrefs.GetFloat("Volume", 0.0F);
+            VolumeValue.text = Volume.value.ToString();
+        }
     }
 }

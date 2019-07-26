@@ -38,16 +38,16 @@ public class GroundController : MonoBehaviour
         switch (PlayerPrefs.GetFloat("Level", 1.0F))
         {
             case 1.0F:
-                SetTemplates(20, "Templates/Level1");
+                SetTemplates(10, "Templates/Level1");
                 break;
             case 2.0F:
                 SetTemplates(20, "Templates/Level2");
                 break;
             case 3.0F:
-                SetTemplates(20, "Templates/Level3");
+                SetTemplates(30, "Templates/Level3");
                 break;
             default:
-                SetTemplates(20, "Templates/Level1");
+                SetTemplates(10, "Templates/Level1");
                 break;
         }
 
@@ -73,7 +73,7 @@ public class GroundController : MonoBehaviour
         Object[] Templates = Resources.LoadAll(templateDir);
 
         // calculate some constants
-        float extInterval = (float)groundLength / (float)templateCount;
+        float extInterval = (float)groundLength / (float)templateCount * 2.5F;
         float maxPosition = grass.transform.position.x - grass.GetComponent<BoxCollider2D>().size.x;
 
         GameObject preTemplate, template;
