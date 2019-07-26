@@ -44,7 +44,7 @@ public class GroundController : MonoBehaviour
                 SetTemplates(20, "Templates/Level2");
                 break;
             case 3.0F:
-                SetTemplates(30, "Templates/Level3");
+                SetTemplates(50, "Templates/Level3");
                 break;
             default:
                 SetTemplates(10, "Templates/Level1");
@@ -80,7 +80,7 @@ public class GroundController : MonoBehaviour
         System.Random rand = new System.Random();
 
         preTemplate = (GameObject)Instantiate(
-            Templates[rand.Next(0, Templates.Length)], new Vector3(rand.Next(10, 20), -3.0F, 0.0F), 
+            Templates[rand.Next(0, Templates.Length)], new Vector3(rand.Next(10, 20), -3.0F, 0.0F),
             transform.rotation, transform
         );
 
