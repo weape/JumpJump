@@ -23,8 +23,8 @@ public class GameEndController : MonoBehaviour
         {
             PlayerController.score += 50000;
         }
-
-        string record = PlayerPrefs.GetString("Score", "{}");
+        int level = (int)PlayerPrefs.GetFloat("Level", 1.0F);
+        string record = PlayerPrefs.GetString("Score" + level, "{}");
         JSONNode Nodes = JSON.Parse(record);
         Nodes["Score"][-1].AsFloat = PlayerController.score;
         float[] floatArray = new float[Nodes["Score"].AsArray.Count];
@@ -42,7 +42,7 @@ public class GameEndController : MonoBehaviour
                 Rank.text = (i + 1).ToString();
             }
         }
-        PlayerPrefs.SetString("Score", Nodes.ToString());
+        PlayerPrefs.SetString("Score" + level, Nodes.ToString());
     }
 
     // Update is called once per frame
