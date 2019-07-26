@@ -111,11 +111,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isJumpPressed = isJumpPressed || Input.GetKeyDown(KeyCode.Space);
-        isHighJumpPressed = isHighJumpPressed || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift);
-        DecreaseEnergy();
+        isHighJumpPressed = isHighJumpPressed || Input.GetKeyDown(KeyCode.UpArrow);
+        isJumpPressed = isJumpPressed || isHighJumpPressed || Input.GetKeyDown(KeyCode.Space);
         score = (long)((-GameObject.Find("Grass(Clone)").transform.position.x) * 100) + COIN_SCORE * gottenCoinNum;
         scoreText.text = score.ToString();
+        DecreaseEnergy();
     }
 
     void FixedUpdate()

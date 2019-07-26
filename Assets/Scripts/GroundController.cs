@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GroundController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GroundController : MonoBehaviour
 
     public static long distance = 0;
 
+    private AudioSource audio;
+
     private PlayerController playerController;
 
     private Vector2 minSpeed = new Vector2(-7.0F, 0.0F);
@@ -17,8 +20,6 @@ public class GroundController : MonoBehaviour
     private Vector2 energySpeedFactor = new Vector2(-0.3F, 0.0F);
 
     private int groundLength = 75;
-
-    private int templateCount = 16;
 
     private Vector3 posDelta = new Vector3(5.0F, 0.0F, 0.0F);
 
@@ -33,8 +34,25 @@ public class GroundController : MonoBehaviour
 
         chest = Instantiate(chest, grass.transform.position + new Vector3(0.0F, 2.0F, 0.0F), grass.transform.rotation, transform);
 
-        SetTemplates();
+        // Choose level.
+        switch (PlayerPrefs.GetFloat("Level", 1.0F))
+        {
+            case 1.0F:
+                SetTemplates(20, "Templates/Level1");
+                break;
+            case 2.0F:
+                SetTemplates(20, "Templates/Level2");
+                break;
+            case 3.0F:
+                SetTemplates(20, "Templates/Level3");
+                break;
+            default:
+                SetTemplates(20, "Templates/Level1");
+                break;
+        }
 
+        audio = gameObject.GetComponent<AudioSource>();
+        audio.volume = PlayerPrefs.GetFloat("Volume", 0.0F) / 100.0F;
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
@@ -49,10 +67,10 @@ public class GroundController : MonoBehaviour
     /**
      * Set game templates into scene.
      */
-    private void SetTemplates()
+    private void SetTemplates(int templateCount, string templateDir)
     {
         // load all game templates
-        Object[] Templates = Resources.LoadAll("template");
+        Object[] Templates = Resources.LoadAll(templateDir);
 
         // calculate some constants
         float extInterval = (float)groundLength / (float)templateCount;
