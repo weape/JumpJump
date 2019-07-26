@@ -17,6 +17,13 @@ public class GameEndController : MonoBehaviour
     {
         Score = GameObject.Find("Score").GetComponent<Text>();
         Rank = GameObject.Find("Rank").GetComponent<Text>();
+        Hint = GameObject.Find("Hint").GetComponent<Text>();
+
+        if (PlayerController.hasPassed)
+        {
+            PlayerController.score += 50000;
+        }
+
         string record = PlayerPrefs.GetString("Score", "{}");
         JSONNode Nodes = JSON.Parse(record);
         Nodes["Score"][-1].AsFloat = PlayerController.score;
@@ -42,5 +49,9 @@ public class GameEndController : MonoBehaviour
     void Update()
     {
         Score.text = PlayerController.score.ToString();
+        if (PlayerController.hasPassed)
+            Hint.text = "Congratulations!";
+        else
+            Hint.text = "Game Over!";
     }
 }

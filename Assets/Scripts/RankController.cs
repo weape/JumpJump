@@ -34,9 +34,4 @@ public class RankController : MonoBehaviour
     {
 
     }
-
-    // void OnGUI()
-    // {
-    //     GUI.Label(new Rect(0, 0, 20, 20), "test");
-    // }
 }

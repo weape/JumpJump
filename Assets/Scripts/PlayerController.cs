@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public static long score = 0; // player's score
+
+    public static bool hasPassed = false; // mark whether the player has passed
+
     private int health;
 
     private int energy;
@@ -30,11 +35,11 @@ public class PlayerController : MonoBehaviour
 
     private Text scoreText;
 
-    public static long score = 0;
-
     private int gottenCoinNum = 0;
 
     private const int COIN_SCORE = 5000;
+
+
 
     public int GetHealth()
     {
@@ -69,6 +74,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hasPassed = false;
         health = 10; energy = 10;
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 4;
