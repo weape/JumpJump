@@ -24,8 +24,6 @@ A simple game developed with Unity Engine.
 
 ToDo List:
 
-* add more game templates
-* add background music
-* display score and rank in GameEnd Scene
 * add more game level
 * add pass reminder
+* add instruction
